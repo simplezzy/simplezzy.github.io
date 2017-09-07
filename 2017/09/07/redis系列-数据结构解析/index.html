@@ -8,14 +8,20 @@
   
     <meta name="keywords" content="Redcode,Redcode's Blog" />
   
-  <meta property="og:type" content="article">
+  <meta name="description" content="导语 Redis 是一个基于键值对（key-value）的分布式存储系统,也是一个高性能的key-value数据库。 很显然，键值对（key-value）的类型显得尤为重要。《Redis设计与实现》中提到：Redis 数据库里面的每个键值对（key-value） 都是由对象（object）组成的。数据库键总是一个字符串对象（string object）;数据库的值则可以是字符串对象、列表对象（li">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
 <meta property="og:title" content="redis系列--数据结构解析">
 <meta property="og:url" content="http://yoursite.com/2017/09/07/redis系列-数据结构解析/index.html">
 <meta property="og:site_name" content="Redcat">
+<meta property="og:description" content="导语 Redis 是一个基于键值对（key-value）的分布式存储系统,也是一个高性能的key-value数据库。 很显然，键值对（key-value）的类型显得尤为重要。《Redis设计与实现》中提到：Redis 数据库里面的每个键值对（key-value） 都是由对象（object）组成的。数据库键总是一个字符串对象（string object）;数据库的值则可以是字符串对象、列表对象（li">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-07T06:47:06.447Z">
+<meta property="og:image" content="https://i.imgur.com/AbOlzEq.png">
+<meta property="og:updated_time" content="2017-09-07T09:05:48.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis系列--数据结构解析">
+<meta name="twitter:description" content="导语 Redis 是一个基于键值对（key-value）的分布式存储系统,也是一个高性能的key-value数据库。 很显然，键值对（key-value）的类型显得尤为重要。《Redis设计与实现》中提到：Redis 数据库里面的每个键值对（key-value） 都是由对象（object）组成的。数据库键总是一个字符串对象（string object）;数据库的值则可以是字符串对象、列表对象（li">
+<meta name="twitter:image" content="https://i.imgur.com/AbOlzEq.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -145,10 +151,19 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            
+            <h3 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h3><blockquote>
+<p>Redis 是一个基于键值对（key-value）的分布式存储系统,也是一个高性能的key-value数据库。 很显然，键值对（key-value）的类型显得尤为重要。<br>《Redis设计与实现》中提到：Redis 数据库里面的每个键值对（key-value） 都是由对象（object）组成的。数据库键总是一个字符串对象（string object）;数据库的值则可以是字符串对象、列表对象（list）、哈希对象（hash）、集合对象（set）、有序集合（sort set）对象这五种对象中的其中一种。   </p>
+</blockquote>
+<h3 id="1-redis的安装"><a href="#1-redis的安装" class="headerlink" title="1. redis的安装"></a>1. redis的安装</h3><ul>
+<li>download &nbsp;&nbsp;  <a href="https://redis.io/download" target="_blank" rel="external">https://redis.io/download</a></li>
+<li>scp local_file &nbsp;&nbsp; scp -rp redis-4.0.1.tar.gz root@ip:/tmp </li>
+<li>tar file &nbsp;&nbsp; tar -zxvf /tmp/redis-4.0.1.tar.gz -C /home/    </li>
+<li>complie &amp;&amp; install &nbsp;&nbsp;<br>&nbsp;&nbsp; cd /home/redis-4.0.1/&nbsp;  make<br>&nbsp;&nbsp;&nbsp;cd src/&nbsp;  make install<br>&nbsp;&nbsp; <img src="https://i.imgur.com/AbOlzEq.png" alt=""></li>
+</ul>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年09月07日 14:47</p>
+        <p>最后更新： 2017年09月07日 17:05</p>
         <p>原始链接： <a class="post-url" href="/2017/09/07/redis系列-数据结构解析/" title="redis系列--数据结构解析">http://yoursite.com/2017/09/07/redis系列-数据结构解析/</a></p>
         <footer>
             <a href="http://yoursite.com">
@@ -165,6 +180,13 @@
         <ul class="article-footer-menu">
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/redis/" class="color1">redis</a>
+      
+  </li>
+
         </ul>
         
     </footer>
@@ -172,8 +194,24 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导语"><span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-redis的安装"><span class="post-toc-text">1. redis的安装</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
+  
+    <a href="/2017/09/07/redis系列-数据类型详解/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          redis系列--数据类型详解
+        
+      </span>
+    </a>
   
   
     <a href="/2017/09/07/redis系列-分布式缓存漫谈/" id="article-nav-older" class="article-nav-link-wrap">
@@ -240,7 +278,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/redis-cache/" style="font-size: 10px;">redis cache</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a>
+            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/redis/" style="font-size: 20px;">redis</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>

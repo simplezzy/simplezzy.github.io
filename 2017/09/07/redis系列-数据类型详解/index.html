@@ -3,18 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: redis cache | Redcat</title>
+  <title>redis系列--数据类型详解 | Redcat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Redcode,Redcode's Blog" />
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Redcat">
-<meta property="og:url" content="http://yoursite.com/tags/redis-cache/index.html">
+  <meta name="description" content="导语 Redis 数据类型主要有7种，分别是 String、Hash、List、Set、Sorted set、pub/sub、Transactions，其中后两种并不常用。从Redis内存管理来看，有其特别的描述方式。Redis内部使用一个redisObject对象来表示所有的key和value，而redisObject最主要的信息包括：type,encoding,vm等。 type代表一个val">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis系列--数据类型详解">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/redis系列-数据类型详解/index.html">
 <meta property="og:site_name" content="Redcat">
+<meta property="og:description" content="导语 Redis 数据类型主要有7种，分别是 String、Hash、List、Set、Sorted set、pub/sub、Transactions，其中后两种并不常用。从Redis内存管理来看，有其特别的描述方式。Redis内部使用一个redisObject对象来表示所有的key和value，而redisObject最主要的信息包括：type,encoding,vm等。 type代表一个val">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-07T09:05:52.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redcat">
+<meta name="twitter:title" content="redis系列--数据类型详解">
+<meta name="twitter:description" content="导语 Redis 数据类型主要有7种，分别是 String、Hash、List、Set、Sorted set、pub/sub、Transactions，其中后两种并不常用。从Redis内存管理来看，有其特别的描述方式。Redis内部使用一个redisObject对象来表示所有的key和value，而redisObject最主要的信息包括：type,encoding,vm等。 type代表一个val">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -115,53 +120,95 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-redis系列-数据类型详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/06/redis系列-安装与部署/" class="archive-article-date">
-  <time datetime="2017-09-06T09:23:47.000Z" itemprop="datePublished">09-06</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/06/redis系列-安装与部署/"  >redis系列--linux下安装与部署</a>
+    <h1 class="post-title" itemprop="name">
+      redis系列--数据类型详解
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-09-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <h3 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h3><blockquote>
+<p>Redis 数据类型主要有7种，分别是 String、Hash、List、Set、Sorted set、pub/sub、Transactions，其中后两种并不常用。从Redis内存管理来看，有其特别的描述方式。<br>Redis内部使用一个redisObject对象来表示所有的key和value，而redisObject最主要的信息包括：type,encoding,vm等。 type代表一个value对象具体是何种数据类型， encoding是不同数据类型在redis内部的存储方式，vm字段，只有打开了Redis的虚拟内存功能，此字段才会真正的分配内存，该功能默认是关闭状态的。</p>
+</blockquote>
+<h3 id="Redis-Hash"><a href="#Redis-Hash" class="headerlink" title="Redis Hash"></a>Redis Hash</h3><p>Redis Hash对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储(small hash)，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。<br> hash-max-zipmap-entries 512<br> hash-max-zipmap-value 64  </p>
+<h3 id="Redis-Pub-Sub"><a href="#Redis-Pub-Sub" class="headerlink" title="Redis Pub/Sub"></a>Redis Pub/Sub</h3><p>在Redis中，你可以设定对某一个key值进行消息发布及消息订阅，当一个key值上进行了消息发布后，所有订阅它的客户端都会收到相应的消息。这一功能最明显的用法就是用作实时消息系统，比如普通的即时聊天，群聊等功能。</p>
+<h3 id="Redis-Transactions"><a href="#Redis-Transactions" class="headerlink" title="Redis Transactions"></a>Redis Transactions</h3><p>Redis的Transactions提供的并不是严格的ACID的事务（比如一串用EXEC提交执行的命令，在执行中服务器宕机，那么会有一部分命令执行了，剩下的没执行），但是这个Transactions还是提供了基本的命令打包执行的功能（在服务器不出问题的情况下，可以保证一连串的命令是顺序在一起执行的，中间有会有其它客户端命令插进来执行）。Redis还提供了一个Watch功能，你可以对一个key进行Watch，然后再执行Transactions，在这过程中，如果这个Watched的值进行了修改，那么这个Transactions会发现并拒绝执行。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年09月07日 17:05</p>
+        <p>原始链接： <a class="post-url" href="/2017/09/07/redis系列-数据类型详解/" title="redis系列--数据类型详解">http://yoursite.com/2017/09/07/redis系列-数据类型详解/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="simplezzy">
+                simplezzy
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/rediscache/" class="color2">redis cache</a>
+    <a href="/tags/redis/" class="color1">redis</a>
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
-  
-  
-    </div></section>
-  
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导语"><span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-Hash"><span class="post-toc-text">Redis Hash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-Pub-Sub"><span class="post-toc-text">Redis Pub/Sub</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-Transactions"><span class="post-toc-text">Redis Transactions</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/07/redis系列-数据结构解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">redis系列--数据结构解析</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
 </section>
         
       </div>
@@ -216,7 +263,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/redis-cache/" style="font-size: 10px;">redis cache</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a>
+            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/redis/" style="font-size: 20px;">redis</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
