@@ -3,20 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>git flow工作流 | Redcat</title>
+  <title>Elasticsearch系列 --安装与部署 | Redcat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Redcode,Redcode's Blog" />
   
-  <meta name="keywords" content="git">
+  <meta name="description" content="导语 本文主要针对windows环境，快速安装体验version5x的ES  1. ES的安装 download &amp;nbsp;&amp;nbsp;  https://www.elastic.co/downloads/elasticsearch  tar file   2. ES的运行 启动服务 &amp;nbsp;&amp;nbsp;  /bin/elasticsearch.bat    终端测试 &amp;nbsp;&amp;nbsp">
+<meta name="keywords" content="elasticsearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git flow工作流">
-<meta property="og:url" content="http://yoursite.com/2017/09/06/git-flow工作流/index.html">
+<meta property="og:title" content="Elasticsearch系列 --安装与部署">
+<meta property="og:url" content="http://yoursite.com/2017/09/13/Elasticsearch系列-安装与部署/index.html">
 <meta property="og:site_name" content="Redcat">
+<meta property="og:description" content="导语 本文主要针对windows环境，快速安装体验version5x的ES  1. ES的安装 download &amp;nbsp;&amp;nbsp;  https://www.elastic.co/downloads/elasticsearch  tar file   2. ES的运行 启动服务 &amp;nbsp;&amp;nbsp;  /bin/elasticsearch.bat    终端测试 &amp;nbsp;&amp;nbsp">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-06T08:57:27.169Z">
+<meta property="og:image" content="https://i.imgur.com/PFymEId.png">
+<meta property="og:image" content="https://i.imgur.com/pUwJWkE.png">
+<meta property="og:image" content="https://i.imgur.com/RP0zIRC.png">
+<meta property="og:image" content="https://i.imgur.com/kLONgHt.png">
+<meta property="og:updated_time" content="2017-09-13T08:24:30.118Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git flow工作流">
+<meta name="twitter:title" content="Elasticsearch系列 --安装与部署">
+<meta name="twitter:description" content="导语 本文主要针对windows环境，快速安装体验version5x的ES  1. ES的安装 download &amp;nbsp;&amp;nbsp;  https://www.elastic.co/downloads/elasticsearch  tar file   2. ES的运行 启动服务 &amp;nbsp;&amp;nbsp;  /bin/elasticsearch.bat    终端测试 &amp;nbsp;&amp;nbsp">
+<meta name="twitter:image" content="https://i.imgur.com/PFymEId.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -117,20 +125,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-git-flow工作流" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Elasticsearch系列-安装与部署" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      git flow工作流
+      Elasticsearch系列 --安装与部署
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2017-09-06
+          <i class="fa fa-calendar"></i>  2017-09-13
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -146,11 +154,32 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            
+            <h3 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h3><blockquote>
+<p>本文主要针对windows环境，快速安装体验version5x的ES</p>
+</blockquote>
+<h3 id="1-ES的安装"><a href="#1-ES的安装" class="headerlink" title="1. ES的安装"></a>1. ES的安装</h3><ul>
+<li>download &nbsp;&nbsp;  <a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="external">https://www.elastic.co/downloads/elasticsearch</a> </li>
+<li>tar file </li>
+</ul>
+<h3 id="2-ES的运行"><a href="#2-ES的运行" class="headerlink" title="2. ES的运行"></a>2. ES的运行</h3><ul>
+<li>启动服务 &nbsp;&nbsp;  /bin/elasticsearch.bat</li>
+</ul>
+<p><img src="https://i.imgur.com/PFymEId.png" alt=""></p>
+<ul>
+<li>终端测试 &nbsp;&nbsp;  curl ‘<a href="http://localhost:9200/?pretty" target="_blank" rel="external">http://localhost:9200/?pretty</a>‘<br><img src="https://i.imgur.com/pUwJWkE.png" alt="">   </li>
+<li>浏览器测试 &nbsp;&nbsp; <a href="http://localhost:9200/?pretty" target="_blank" rel="external">http://localhost:9200/?pretty</a><br><img src="https://i.imgur.com/RP0zIRC.png" alt=""></li>
+</ul>
+<h3 id="3-Elasticsearch-head插件"><a href="#3-Elasticsearch-head插件" class="headerlink" title="3. Elasticsearch-head插件"></a>3. Elasticsearch-head插件</h3><ul>
+<li><p>网上有很多的插件安装方法，这里采用最简单的方式：通过chrome商城添加拓展程序elasticsearch-head安装即可    </p>
+</li>
+<li><p>打开此应用，即可出现：   <img src="https://i.imgur.com/kLONgHt.png" alt="">  </p>
+</li>
+</ul>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年09月06日 16:57</p>
-        <p>原始链接： <a class="post-url" href="/2017/09/06/git-flow工作流/" title="git flow工作流">http://yoursite.com/2017/09/06/git-flow工作流/</a></p>
+        <p>最后更新： 2017年09月13日 16:24</p>
+        <p>原始链接： <a class="post-url" href="/2017/09/13/Elasticsearch系列-安装与部署/" title="Elasticsearch系列 --安装与部署">http://yoursite.com/2017/09/13/Elasticsearch系列-安装与部署/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.png" alt="simplezzy">
@@ -169,7 +198,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/git/" class="color4">git</a>
+    <a href="/tags/elasticsearch/" class="color4">elasticsearch</a>
       
   </li>
 
@@ -180,22 +209,18 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导语"><span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-ES的安装"><span class="post-toc-text">1. ES的安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-ES的运行"><span class="post-toc-text">2. ES的运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Elasticsearch-head插件"><span class="post-toc-text">3. Elasticsearch-head插件</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
-    <a href="/2017/09/06/redis系列-安装与部署/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          redis系列--linux下安装与部署
-        
-      </span>
-    </a>
   
-  
-    <a href="/2017/09/06/spring-cloud-漫谈/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">spring-cloud 漫谈</span>
+    <a href="/2017/09/12/Elasticsearch系列-ES漫谈/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Elasticsearch系列--ES漫谈</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
