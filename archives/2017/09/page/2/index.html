@@ -3,25 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>redis系列--linux下安装与部署 | Redcat</title>
+  <title>Archives: 2017/9 | Redcat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Redcat,Redcat's Blog" />
   
-  <meta name="description" content="导语 Redis 是当前比较热门的NOSQL之一     1. redis的安装 download &amp;nbsp;&amp;nbsp;  https://redis.io/download scp local_file &amp;nbsp;&amp;nbsp; scp -rp redis-4.0.1.tar.gz root@ip:/tmp  tar file &amp;nbsp;&amp;nbsp; tar -zxvf /tmp/redi">
-<meta name="keywords" content="redis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="redis系列--linux下安装与部署">
-<meta property="og:url" content="http://yoursite.com/2017/09/06/redis系列-安装与部署/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Redcat">
+<meta property="og:url" content="http://yoursite.com/archives/2017/09/page/2/index.html">
 <meta property="og:site_name" content="Redcat">
-<meta property="og:description" content="导语 Redis 是当前比较热门的NOSQL之一     1. redis的安装 download &amp;nbsp;&amp;nbsp;  https://redis.io/download scp local_file &amp;nbsp;&amp;nbsp; scp -rp redis-4.0.1.tar.gz root@ip:/tmp  tar file &amp;nbsp;&amp;nbsp; tar -zxvf /tmp/redi">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://i.imgur.com/AbOlzEq.png">
-<meta property="og:updated_time" content="2017-09-09T04:04:33.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis系列--linux下安装与部署">
-<meta name="twitter:description" content="导语 Redis 是当前比较热门的NOSQL之一     1. redis的安装 download &amp;nbsp;&amp;nbsp;  https://redis.io/download scp local_file &amp;nbsp;&amp;nbsp; scp -rp redis-4.0.1.tar.gz root@ip:/tmp  tar file &amp;nbsp;&amp;nbsp; tar -zxvf /tmp/redi">
-<meta name="twitter:image" content="https://i.imgur.com/AbOlzEq.png">
+<meta name="twitter:title" content="Redcat">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -122,121 +115,57 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-redis系列-安装与部署" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+        <section id="main" class="body-wrap">
   
-    <h1 class="post-title" itemprop="name">
-      redis系列--linux下安装与部署
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/09/06/hexo-github-成就个人blog/" class="archive-article-date">
+  <time datetime="2017-09-06T06:03:30.112Z" itemprop="datePublished">09-06</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/09/06/hexo-github-成就个人blog/"  >hexo+github 成就个人blog</a>
     </h1>
-    <div class="post-title-bar">
-      <ul>
-          
-        <li>
-          <i class="fa fa-calendar"></i>  2017-09-06
-        </li>
-        <li>
-          <i class="fa fa-eye"></i>
-          <span id="busuanzi_value_page_pv"></span>
-        </li>
-      </ul>
-    </div>
   
 
-          
-      </header>
-    
-    <div class="article-entry post-content" itemprop="articleBody">
+    </header>
       
-            
-            <h3 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h3><blockquote>
-<p>Redis 是当前比较热门的NOSQL之一   </p>
-</blockquote>
-<h3 id="1-redis的安装"><a href="#1-redis的安装" class="headerlink" title="1. redis的安装"></a>1. redis的安装</h3><ul>
-<li>download &nbsp;&nbsp;  <a href="https://redis.io/download" target="_blank" rel="external">https://redis.io/download</a></li>
-<li>scp local_file &nbsp;&nbsp; scp -rp redis-4.0.1.tar.gz root@ip:/tmp </li>
-<li>tar file &nbsp;&nbsp; tar -zxvf /tmp/redis-4.0.1.tar.gz -C /home/    </li>
-<li>complie &amp;&amp; install &nbsp;&nbsp;<br>&nbsp;&nbsp; cd /home/redis-4.0.1/&nbsp;  make<br>&nbsp;&nbsp;&nbsp;cd src/&nbsp;  make install<br>&nbsp;&nbsp; <img src="https://i.imgur.com/AbOlzEq.png" alt=""></li>
-</ul>
-<h3 id="2-redis的部署"><a href="#2-redis的部署" class="headerlink" title="2. redis的部署"></a>2. redis的部署</h3><ul>
-<li>文件管理 &nbsp;&nbsp;  方便配置文件和cmd管理，创建bin和conf文件:<br>在安装目录下：mkdir bin  | mkdir ect<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv src/mkreleasehdr.sh redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-benchmark ./bin/<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv redis.conf /ect   </li>
-<li>启动服务(前台) &nbsp;&nbsp;  ./bin/redis-server<br>&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;注意：默认情况下，启动的redis服务实在前台直接运行的，当关闭会话后，服务也随之关闭。</li>
-<li>启动服务(后台) &nbsp;&nbsp;  修改conf文件   &nbsp;&nbsp; &nbsp;&nbsp;vim /ect/redis.conf &nbsp;&nbsp; 将daemonize的值改为yes.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ./bin/redis-server ect/redis.conf &nbsp;&nbsp;&nbsp;  |&nbsp;&nbsp;&nbsp;<br>停止服务 bin/redis-cli shutdown (or pkill bin/redis-server)    </li>
-<li>启动客户端 &nbsp;&nbsp;  ./bin/redis-cli    </li>
-<li>查看端口号 &nbsp;&nbsp;  netstat -tunpl | grep 6379</li>
-</ul>
-<h3 id="3-redis-测试"><a href="#3-redis-测试" class="headerlink" title="3. redis 测试"></a>3. redis 测试</h3><ul>
-<li>启动客户端 &nbsp;&nbsp;  ./bin/redis-cli<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; set testkey “this is my test”<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; get testkey<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; “this is my test”<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; exit<blockquote>
-<p>至此，Redis的安装部署全部成功，开始享受Redis之旅了.</p>
-</blockquote>
-</li>
-</ul>
-
-            <div class="post-copyright">
-    <div class="content">
-        <p>最后更新： 2017年09月09日 12:04</p>
-        <p>原始链接： <a class="post-url" href="/2017/09/06/redis系列-安装与部署/" title="redis系列--linux下安装与部署">http://yoursite.com/2017/09/06/redis系列-安装与部署/</a></p>
-        <footer>
-            <a href="http://yoursite.com">
-                <img src="/images/logo.png" alt="simplezzy">
-                simplezzy
-            </a>
-        </footer>
-    </div>
-</div>
-
-      
-    </div>
-    <footer class="article-footer">
-        <ul class="article-footer-menu">
-            
+        <div class="archive-post-footer">
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/redis/" class="color1">redis</a>
+    <a href="/tags/hexoblog/" class="color1">hexo  blog</a>
       
   </li>
 
-        </ul>
-        
-    </footer>
+        </div>
+      
   </div>
 </article>
 
-
-    <aside class="post-toc-pos post-toc-top" id="post-toc">
-        <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导语"><span class="post-toc-text">导语</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-redis的安装"><span class="post-toc-text">1. redis的安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-redis的部署"><span class="post-toc-text">2. redis的部署</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-redis-测试"><span class="post-toc-text">3. redis 测试</span></a></li></ol>
-        </nav>
-    </aside>
-    
-
-<nav id="article-nav">
-  
-    <a href="/2017/09/07/redis系列-分布式缓存漫谈/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          redis系列--分布式缓存漫谈
-        
-      </span>
-    </a>
   
   
-    <a href="/2017/09/06/git-flow工作流/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">git flow工作流</span>
-      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-    </a>
+    </div></section>
   
-</nav>
 
 
-
-    
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/archives/2017/09/"><< Prev</a><a class="page-number" href="/archives/2017/09/">1</a><span class="page-number current">2</span>
+  </nav>
 </section>
         
       </div>
